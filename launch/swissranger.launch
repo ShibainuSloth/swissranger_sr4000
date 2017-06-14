@@ -1,0 +1,16 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+  <param name="range" value="1.0"/>
+
+  <node pkg="swissranger_camera" type="swissranger_camera" name="swissranger"
+        output="screen" respawn="false">
+    <param name="auto_exposure" value="1" />
+  </node>
+
+  <node pkg="swissranger_sr4000" type="sr_4000" name="sr_listener"/>
+
+  <!-- ROS visualizer -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find swissranger_camera)/cfg/swissranger.rviz" />
+
+</launch>
